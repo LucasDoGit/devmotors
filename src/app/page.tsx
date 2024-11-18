@@ -1,20 +1,22 @@
+import { HomeProps } from "@/utils/home.type";
+import { Submenu } from "@/components/home/navbar";
+import { getDataHome } from "@/utils/actions/get-data";
+import { Hero } from "@/components/hero";
+import { Phone } from "lucide-react";
 
+export default async function Home() {
+  const { object }: HomeProps = await getDataHome();
 
-export default function Home() {
   return (
     <main>
-
-      <div style={{ width: "100%", height: 600, backgroundColor: "#737373", marginBottom: 24 }}>
-        <h1>Teste</h1>
-      </div>
-      
-      <div style={{ width: "100%", height: 600, backgroundColor: "blue", marginBottom: 24 }}>
-        <h1>Teste</h1>
-      </div>
-
-      <div style={{ width: "100%", height: 600, backgroundColor: "red", marginBottom: 24 }}>
-        <h1>Teste</h1>
-      </div>
+      <Submenu />
+      <Hero 
+        heading={object.metadata.heading}
+        bannerUrl={object.metadata.banner.url}
+        buttonTitle={object.metadata.cta_button.title}
+        buttonUrl={object.metadata.cta_button.url}
+        icon={<Phone size={24} color="#FFF" />}
+      />
     </main>
   );
 }
