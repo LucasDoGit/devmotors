@@ -4,8 +4,13 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import styles from './styles.module.scss'
 import { X, Menu } from 'lucide-react'
+import { MenuProps } from '@/utils/menu.type'
 
-export function Submenu(){
+interface SubMenuProps {
+    menu: MenuProps
+}
+
+export function Submenu({ menu }: SubMenuProps){
     const [isOpen, setIsOpen] = useState(false);
     
     useEffect(() => {
@@ -38,16 +43,15 @@ export function Submenu(){
                         <X size={54} color="#121212"/>
                     </button>
                 )}
-                <li>
-                    <Link href="/post/pagina-1">
-                        Página 1
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/post/pagina-2">
-                        Página 2
-                    </Link>
-                </li>
+
+                {menu.objects.map( item => (
+                    <li key={item.slug} >
+                        <Link href={`/post/${item.slug}`}>
+                            {item.title}
+                        </Link>
+                    </li>
+                ))}
+                
             </ul>
         </section>
     )
