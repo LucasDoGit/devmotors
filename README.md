@@ -1,5 +1,5 @@
 <div style="display: flex; flex-direction: column; text-align: center;">
-    <h1>DevMotors - Sistema para mêcanicas</h1>
+    <h1>DevMotors - Sistema para mecânicas</h1>
     <img style="max-width: 1024px; margin: auto;" src="public/github/1.png" alt="preview do site">
 </div>
 
