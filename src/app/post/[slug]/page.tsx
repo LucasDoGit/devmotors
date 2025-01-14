@@ -5,9 +5,9 @@ import { Metadata } from 'next';
 import { Content } from './components/content';
 import { LoadingPost } from './components/loading';
 
-export async function generateMetadata({ params: { slug } }: {
-    params: { slug: string }
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string }}): Promise<Metadata> {
+    const { slug } = await params;
+
     try {
 
         const { objects }: PostProps = await getItemBySlug(slug)
@@ -47,9 +47,8 @@ export async function generateMetadata({ params: { slug } }: {
     }
 }
 
-export default async function Page({ params: { slug } }: {
-    params: { slug: string }
-}) {
+export default async function Page({ params }: { params: { slug: string } }) {
+    const { slug } = await params;
 
     return (
         <>
